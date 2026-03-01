@@ -11,17 +11,6 @@ int pin[4] = {25,26,27,14};
 int now=1100;
 
 
-void getjiro(){
-  int f[3];
-  f[0] = analogRead(32);
-  f[1] = analogRead(35);
-  f[2] = analogRead(34);
-
-  j[0] = f[0];
-  j[1] = f[1];
-  j[2] = f[2];
-}
-
 
 
 void setup() {

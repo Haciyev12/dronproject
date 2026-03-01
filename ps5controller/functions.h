@@ -13,5 +13,6 @@ extern int j[3];
 
 void stopMotors();
 void getvalue();
+void getjiro();
 
 #endif
