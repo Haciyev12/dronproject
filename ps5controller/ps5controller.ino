@@ -1,8 +1,7 @@
-#include <ps5Controller.h>
-#include <SPI.h>
-#include <RF24.h>
-#include <ESP32Servo.h>
+#include <ps5Controller.h> // it is working 
 
+#include <SPI.h>
+#include <ESP32Servo.h>
 
 
 unsigned long lastTime = 0;
