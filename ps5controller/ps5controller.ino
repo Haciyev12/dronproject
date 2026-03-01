@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 #include "functions.h"
-=======
-#include <ps5Controller.h> // it is working (Hemise INsallah demek lazimdi)
->>>>>>> 4638be7ff42763ad1d43bf086d802ed6e5f4139a
-
-#include <SPI.h>
-#include <ESP32Servo.h>
 
 byte address[6] = "00001";
 Servo esc[4];
