@@ -1,4 +1,4 @@
-#include <ps5Controller.h> // it is working 
+#include <ps5Controller.h> // it is working (Hemise INsallah demek lazimdi)
 
 #include <SPI.h>
 #include <ESP32Servo.h>
