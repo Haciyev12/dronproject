@@ -19,8 +19,6 @@ void getjiro(){
 }
 
 
-
-
 void getvalue(){
   a[0] = ps5.LStickX();
   a[1] = ps5.LStickY();

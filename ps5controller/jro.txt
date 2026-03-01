@@ -1,0 +1,36 @@
+// Pins for ESP32
+const int xPin = 34;
+const int yPin = 35;
+const int zPin = 32;
+
+// Calibration values (Adjust these based on your specific sensor)
+// These represent the ADC values at -1g and +1g
+int minVal = 1300; 
+int maxVal = 2300;
+
+void setup() {
+  Serial.begin(115200);
+}
+
+void loop() {
+  // Read raw values
+  int xRaw = analogRead(xPin);
+  int yRaw = analogRead(yPin);
+  int zRaw = analogRead(zPin);
+
+  // Map raw values to a range of -1 to 1 (representing Gs)
+  // We use long to avoid overflow during mapping
+  double xG = map(xRaw, minVal, maxVal, -1000, 1000) / 1000.0;
+  double yG = map(yRaw, minVal, maxVal, -1000, 1000) / 1000.0;
+  double zG = map(zRaw, minVal, maxVal, -1000, 1000) / 1000.0;
+
+  // Calculate Roll and Pitch in degrees
+  // Formula: Angle = atan2(acceleration, gravity) * (180 / PI)
+  double roll = atan2(yG, zG) * 57.29578; 
+  double pitch = atan2((-xG), sqrt(yG * yG + zG * zG)) * 57.29578;
+
+  Serial.print("Roll: "); Serial.print(roll);
+  Serial.print(" | Pitch: "); Serial.println(pitch);
+
+  delay(100);
+}
