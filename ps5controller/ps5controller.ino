@@ -34,13 +34,13 @@ void loop() {
     getjiro();
     
 
-    int speed=map(a[6], 0, 255, 1100, 1300);
+    int speed = map(a[6], 0, 255, 1100, 1300);
     
     if(speed > now){
-      now += 4;
+      now += 20;
     }
     if(speed < now){
-      now -= 2;
+      now -= 1;
     }
     
     for(int i = 0; i < 4; i++){
@@ -66,7 +66,7 @@ void loop() {
 
   }   
   else {
-    stopMotors();
+    speed = 1100;
     delay(1000);
   }
 
@@ -76,6 +76,7 @@ void loop() {
   float slip = max(0.0,20.0 - dt);
   delay(slip);
   */
+  
 
   delay(10);
 }
