@@ -1,5 +1,5 @@
 #include "ps5.h"
-
+#include "esp_mac.h"
 #include <esp_system.h>
 #include <string.h>
 
@@ -221,7 +221,8 @@ void ps5SetBluetoothMacAddress(const uint8_t* mac) {
   uint8_t baseMac[6];
   memcpy(baseMac, mac, 6);
   baseMac[5] -= 2;
-  esp_base_mac_addr_set(baseMac);
+  esp_iface_mac_addr_set(baseMac, ESP_MAC_BASE);
+  //esp_base_mac_addr_set(baseMac); // bunu baqlamisiq
 }
 
 /********************************************************************************/
