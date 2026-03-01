@@ -9,7 +9,7 @@ int j[3];
 unsigned long lastTime = 0;
 int pin[4] = {25,26,27,14};
 int now=1100;
-
+bool checkher = false;
 
 void getjiro(){
   int f[3];
