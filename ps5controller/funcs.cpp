@@ -1,5 +1,18 @@
 #include "functions.h"
 
+void progressDelay(unsigned long d){
+  currentTime = micros();
+  
+  long dt = (currentTime - lastTime) / 1000.0;
+  
+  lastTime = currentTime;
+  
+  long slip = (dt < 0) ? 0 : dt;
+  
+  delay(slip);  
+}
+
+
 
 void stopMotors() {
   for(int i = 0; i < 4 ;i++){
@@ -29,5 +42,22 @@ void getvalue(){
   a[6] = ps5.R2Value();
 }
 
+void printValues(){
+  Serial.println("Speed : ");
+  Serial.println(speed);
+  
+  Serial.println("Playstation controller values : ");
+  for(int i = 0; i < 7; i++){
+    Serial.print(a[i]);
+    Serial.print(" ");
+  }
+  Serial.println(" ");
+  Serial.println("Jiroskop values : ");
+  
+  for(int i = 0; i < 3; i++){
+    Serial.print(j[i]);
+    Serial.print(" ");
+  }
+}
 
 
