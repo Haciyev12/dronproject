@@ -14,21 +14,22 @@ void progressDelay(unsigned long d){
 
 
 
-void stopMotors() {
+void stopMotors(bool exit) {
   for(int i = 0; i < 4 ;i++){
     esc[i].writeMicroseconds(1000);
   }
+
+  while(exit);
 }
 
 void getjiro(){
   int f[3];
-  f[0] = analogRead(32);
-  f[1] = analogRead(35);
-  f[2] = analogRead(34);
-
-  j[0] = f[0];
-  j[1] = f[1];
-  j[2] = f[2];
+  for(int i = 0; i < 3; i++){
+    f[i] = analogRead(jroPin[i]);
+  }
+  for(int i = 0; i < 3; i++){
+    j[i] = map(f[i], 1300, 2300, -1000, 1000) / 1000.0;
+  }
 }
 
 
@@ -43,21 +44,33 @@ void getvalue(){
 }
 
 void printValues(){
+  
   Serial.println("Speed : ");
-  Serial.println(speed);
+  
+  for(int i = 0; i < 4; i++){
+    Serial.print(speed[i]);
+    Serial.print(" ");
+  }
   
   Serial.println("Playstation controller values : ");
+  
   for(int i = 0; i < 7; i++){
     Serial.print(a[i]);
     Serial.print(" ");
   }
-  Serial.println(" ");
+
   Serial.println("Jiroskop values : ");
   
   for(int i = 0; i < 3; i++){
     Serial.print(j[i]);
     Serial.print(" ");
   }
+  
 }
 
 
+void servoWrite(){
+  for(int i = 0; i < 4; i++){
+    esc[i].writeMicroseconds(now[i]);
+  }
+}
